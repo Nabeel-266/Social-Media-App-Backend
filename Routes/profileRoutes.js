@@ -1,6 +1,6 @@
 import express from "express";
 
-import { getProfile, updateProfile } from "../Controllers/profile_Controller.js";
+import { getProfile, updateProfile } from "../Controllers/profileController.js";
 
 const profileRoutes = express.Router();
 

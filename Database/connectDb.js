@@ -11,13 +11,13 @@ const connectDb = async (uri) => {
     return connection;
   } catch (err) {
     console.log(err.stack);
-    process.exit(1);
+    // process.exit(1);
   }
 };
 
 process.on("SIGINT", async function () {
   console.log("App is terminating");
-  process.exit(0);
+  // process.exit(0);
 });
 
 export default connectDb;

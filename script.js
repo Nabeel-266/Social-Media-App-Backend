@@ -1,15 +1,21 @@
 import express from "express";
-import authRoutes from "./Routes/auth_routes.js";
-import profileRoutes from "./Routes/profile_routes.js";
-import connectDb from "./Database/connectDb.js";
+import helmet from "helmet";
+import morgan from "morgan";
 import dotenv from "dotenv";
 dotenv.config();
 
+import authRoutes from "./Routes/authRoutes.js";
+import profileRoutes from "./Routes/profileRoutes.js";
+import connectDb from "./Database/connectDb.js";
+
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT;
+// const Port = 8000;
 
 // For Middlewares
 app.use(express.json());
+app.use(helmet());
+app.use(morgan("common"));
 
 app.use((req, res, next) => {
   req.body.date = new Date();
@@ -18,8 +24,8 @@ app.use((req, res, next) => {
 });
 
 // For Routes
-app.use("/auth", authRoutes);
-app.use("/profile", profileRoutes);
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/profile", profileRoutes);
 
 // For Start Server
 const startServer = async () => {
