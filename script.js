@@ -5,12 +5,12 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import authRoutes from "./Routes/authRoutes.js";
-import profileRoutes from "./Routes/profileRoutes.js";
+import userRoutes from "./Routes/userRoutes.js";
+import postRoutes from "./Routes/postRoutes.js";
 import connectDb from "./Database/connectDb.js";
 
 const app = express();
 const PORT = process.env.PORT;
-// const Port = 8000;
 
 // For Middlewares
 app.use(express.json());
@@ -25,7 +25,8 @@ app.use((req, res, next) => {
 
 // For Routes
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/profile", profileRoutes);
+app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/post", postRoutes);
 
 // For Start Server
 const startServer = async () => {

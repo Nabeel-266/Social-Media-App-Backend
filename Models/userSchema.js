@@ -2,6 +2,14 @@ import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema(
   {
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+    },
     userName: {
       type: String,
       required: true,
@@ -29,9 +37,21 @@ const UserSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
-    following: {
+    followings: {
       type: Array,
       default: [],
+    },
+    desc: {
+      type: String,
+      max: 50,
+    },
+    city: {
+      type: String,
+      max: 20,
+    },
+    from: {
+      type: String,
+      max: 20,
     },
     isAdmin: {
       type: Boolean,
